@@ -1,0 +1,280 @@
+Index: src/main/java/org/poecat/services/SearchService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat.services;public class SearchService {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/services/SearchService.java b/src/main/java/org/poecat/services/SearchService.java
+--- a/src/main/java/org/poecat/services/SearchService.java	
++++ b/src/main/java/org/poecat/services/SearchService.java	
+@@ -1,2 +1,17 @@
+-package org.poecat.services;public class SearchService {
++package org.poecat.services;
++
++import org.poecat.entities.Profile;
++
++import java.util.List;
++import java.util.stream.Collectors;
++
++public class SearchService {
++
++    private List<Profile> petsitters;
++
++    public List<Profile> searchPetsitters(String location, String availability) {
++        return petsitters.stream()
++                .filter(petsitter -> petsitter.getDescription().contains(location) && petsitter.getDescription().contains(availability))
++                .collect(Collectors.toList());
++    }
+ }
+Index: src/main/java/org/poecat/entities/Booking.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat.entities;public class Booking {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/entities/Booking.java b/src/main/java/org/poecat/entities/Booking.java
+--- a/src/main/java/org/poecat/entities/Booking.java	
++++ b/src/main/java/org/poecat/entities/Booking.java	
+@@ -1,2 +1,19 @@
+-package org.poecat.entities;public class Booking {
++package org.poecat.entities;
++
++import lombok.Getter;
++import lombok.Setter;
++
++import java.time.LocalDateTime;
++
++@Getter
++@Setter
++public class Booking {
++
++    private String bookingId;
++    private String ownerId;
++    private String petsitterId;
++    private String serviceType;
++    private LocalDateTime startTime;
++    private  LocalDateTime endTime;
++
+ }
+Index: src/main/java/org/poecat/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat;\r\n\r\n//TIP To <b>Run</b> code, press <shortcut actionId=\"Run\"/> or\r\n// click the <icon src=\"AllIcons.Actions.Execute\"/> icon in the gutter.\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        //TIP Press <shortcut actionId=\"ShowIntentionActions\"/> with your caret at the highlighted text\r\n        // to see how IntelliJ IDEA suggests fixing it.\r\n        System.out.printf(\"Hello and welcome!\");\r\n\r\n        for (int i = 1; i <= 5; i++) {\r\n            //TIP Press <shortcut actionId=\"Debug\"/> to start debugging your code. We have set one <icon src=\"AllIcons.Debugger.Db_set_breakpoint\"/> breakpoint\r\n            // for you, but you can always add more by pressing <shortcut actionId=\"ToggleLineBreakpoint\"/>.\r\n            System.out.println(\"i = \" + i);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/Main.java b/src/main/java/org/poecat/Main.java
+--- a/src/main/java/org/poecat/Main.java	
++++ b/src/main/java/org/poecat/Main.java	
+@@ -1,17 +1,8 @@
+ package org.poecat;
+ 
+-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+-public class Main {
++class Main {
+     public static void main(String[] args) {
+-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+-        // to see how IntelliJ IDEA suggests fixing it.
+-        System.out.printf("Hello and welcome!");
+ 
+-        for (int i = 1; i <= 5; i++) {
+-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
+-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
+-            System.out.println("i = " + i);
+-        }
++        System.out.printf("Petsitter for your doggo hooray");
+     }
+ }
+\ No newline at end of file
+Index: src/main/java/org/poecat/entities/Profile.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat.entities;public class Profile {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/entities/Profile.java b/src/main/java/org/poecat/entities/Profile.java
+--- a/src/main/java/org/poecat/entities/Profile.java	
++++ b/src/main/java/org/poecat/entities/Profile.java	
+@@ -1,2 +1,17 @@
+-package org.poecat.entities;public class Profile {
++package org.poecat.entities;
++
++import lombok.Getter;
++import lombok.Setter;
++
++import java.util.List;
++
++@Getter
++@Setter
++public class Profile {
++
++    private String userId;
++    private String name;
++    private String description;
++    private List<String> reviews;
++
+ }
+Index: src/main/java/org/poecat/services/BookingService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat.services;public class BookingService {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/services/BookingService.java b/src/main/java/org/poecat/services/BookingService.java
+--- a/src/main/java/org/poecat/services/BookingService.java	
++++ b/src/main/java/org/poecat/services/BookingService.java	
+@@ -1,2 +1,22 @@
+-package org.poecat.services;public class BookingService {
++package org.poecat.services;
++
++import org.poecat.entities.Booking;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.stream.Collectors;
++
++public class BookingService {
++
++    private List<Booking> bookings = new ArrayList<>();
++
++    public void createBooking(Booking booking) {
++        bookings.add(booking);
++    }
++
++    public List<Booking> getBookingForUser(String userId) {
++        return bookings.stream()
++                .filter(booking -> booking.getOwnerId().equals(userId) || booking.getPetsitterId().equals(userId))
++                .collect(Collectors.toList());
++    }
+ }
+Index: src/main/java/org/poecat/services/AuthService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat.services;public class AuthService {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/services/AuthService.java b/src/main/java/org/poecat/services/AuthService.java
+--- a/src/main/java/org/poecat/services/AuthService.java	
++++ b/src/main/java/org/poecat/services/AuthService.java	
+@@ -1,2 +1,24 @@
+-package org.poecat.services;public class AuthService {
++package org.poecat.services;
++
++import org.poecat.entities.User;
++
++import java.util.HashMap;
++import java.util.Map;
++
++public class AuthService {
++
++    private Map<String, User> users = new HashMap<>();
++
++    //add new user to database
++    public void register(User user) {
++        users.put(user.getUsername(), user);
++    }
++
++    public User login(String username, String password) {
++        User user = users.get(username);
++        if(user != null && user.getPassword().equals(password)) {
++            return user;
++        }
++        return null;
++    }
+ }
+Index: src/main/java/org/poecat/entities/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat.entities;public class User {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/entities/User.java b/src/main/java/org/poecat/entities/User.java
+--- a/src/main/java/org/poecat/entities/User.java	
++++ b/src/main/java/org/poecat/entities/User.java	
+@@ -1,2 +1,14 @@
+-package org.poecat.entities;public class User {
++package org.poecat.entities;
++
++import lombok.Getter;
++import lombok.Setter;
++
++@Getter
++@Setter
++public class User {
++
++    private String username;
++    private String password;
++    private String role; //owner (client) or petsitter
++
+ }
+Index: src/main/java/org/poecat/services/ProfileService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.poecat.services;public class ProfileService {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/poecat/services/ProfileService.java b/src/main/java/org/poecat/services/ProfileService.java
+--- a/src/main/java/org/poecat/services/ProfileService.java	
++++ b/src/main/java/org/poecat/services/ProfileService.java	
+@@ -1,2 +1,23 @@
+-package org.poecat.services;public class ProfileService {
++package org.poecat.services;
++
++import org.poecat.entities.Profile;
++
++import java.util.HashMap;
++import java.util.Map;
++
++public class ProfileService {
++
++    private Map<String, Profile> profiles = new HashMap<>();
++
++    public void createProfile(Profile profile) {
++        profiles.put(profile.getUserId(), profile);
++    }
++
++    public Profile getProfile(String userId) {
++        return profiles.get(userId);
++    }
++
++    public void updateProfile(Profile profile) {
++        profiles.put(profile.getUserId(), profile);
++    }
+ }
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>org.poecat</groupId>\r\n    <artifactId>GetPetsitter</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n\r\n    <properties>\r\n        <maven.compiler.source>22</maven.compiler.source>\r\n        <maven.compiler.target>22</maven.compiler.target>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    </properties>\r\n    \r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	
++++ b/pom.xml	
+@@ -13,5 +13,16 @@
+         <maven.compiler.target>22</maven.compiler.target>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     </properties>
+-    
++
++    <dependencies>
++        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
++        <dependency>
++            <groupId>org.projectlombok</groupId>
++            <artifactId>lombok</artifactId>
++            <version>1.18.34</version>
++            <scope>provided</scope>
++        </dependency>
++
++    </dependencies>
++
+ </project>
+\ No newline at end of file
